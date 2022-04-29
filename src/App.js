@@ -1,4 +1,4 @@
-import { createElement, useState } from "react";
+import { useState } from "react";
 
 import Header from "./components/Header.js";
 import WelcomeWorld from "./components/WelcomeWorld.js";
@@ -19,7 +19,6 @@ function App() {
 
 	function router(path) {
 		let pathNames = path.split("/");
-		console.log(pathNames);
 
 		let rootPath = pathNames[1];
 		let argument = pathNames[2];

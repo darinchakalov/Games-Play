@@ -1,3 +1,9 @@
+const baseUrl = "http://localhost:3030/data";
+
 export function getAllGames() {
-	return fetch("http://localhost:3030/data/games?sortBy=_createdOn%20desc").then((res) => res.json());
+	return fetch(`${baseUrl}/games?sortBy=_createdOn%20desc`).then((res) => res.json());
+}
+
+export function getOneGame(id) {
+	return fetch(`${baseUrl}/games/${id}`).then((res) => res.json());
 }
