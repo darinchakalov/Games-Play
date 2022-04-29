@@ -3,7 +3,7 @@ import GameCatalogSingleGame from "./GameCatalogSingleGame.js";
 
 import * as gamesService from "../../services/gamesService.js";
 
-export default function GameCatalog() {
+export default function GameCatalog({ navigationChangeHandler }) {
 	const [games, setGames] = useState([]);
 
 	useEffect(() => {
@@ -24,6 +24,7 @@ export default function GameCatalog() {
 						category={game.category}
 						title={game.title}
 						id={game._id}
+						navigationChangeHandler={navigationChangeHandler}
 					></GameCatalogSingleGame>
 				))
 			) : (

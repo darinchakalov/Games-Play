@@ -1,4 +1,8 @@
-export default function GameCatalogSingleGame({ imageUrl, category, title, id }) {
+export default function GameCatalogSingleGame({ imageUrl, category, title, id, navigationChangeHandler }) {
+	const onDetailsClick = (e) => {
+		e.preventDefault();
+		navigationChangeHandler(`/details/${id}`);
+	};
 
 	return (
 		<div className="allGames">
@@ -6,7 +10,7 @@ export default function GameCatalogSingleGame({ imageUrl, category, title, id })
 				<img src={imageUrl} />
 				<h6>{category}</h6>
 				<h2>{title}</h2>
-				<a href={`/games/${id}`} className="details-button">
+				<a href={`/games/${id}`} onClick={onDetailsClick} className="details-button">
 					Details
 				</a>
 			</div>
