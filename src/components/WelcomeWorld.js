@@ -1,4 +1,16 @@
-function WelcomeWorld() {
+import { useEffect, useState } from "react";
+import { getLatestGames } from "../services/gamesService.js";
+import LatestGamesCard from "./LatestGamesCard.js";
+
+function WelcomeWorld({ navigationChangeHandler }) {
+	let [games, setGames] = useState([]);
+
+	useEffect(() => {
+		getLatestGames()
+			.then((games) => setGames(games))
+			.catch((err) => console.log(err));
+	}, []);
+
 	return (
 		<section id="welcome-world">
 			<div className="welcome-message">
@@ -9,63 +21,19 @@ function WelcomeWorld() {
 
 			<div id="home-page">
 				<h1>Latest Games</h1>
-
-				<div className="game">
-					<div className="image-wrap">
-						<img src="/images/CoverFire.png" />
-					</div>
-					<h3>Cover Fire</h3>
-					<div className="rating">
-						<span>☆</span>
-						<span>☆</span>
-						<span>☆</span>
-						<span>☆</span>
-						<span>☆</span>
-					</div>
-					<div className="data-buttons">
-						<a href="#" className="btn details-btn">
-							Details
-						</a>
-					</div>
-				</div>
-				<div className="game">
-					<div className="image-wrap">
-						<img src="/images/ZombieLang.png" />
-					</div>
-					<h3>Zombie Lang</h3>
-					<div className="rating">
-						<span>☆</span>
-						<span>☆</span>
-						<span>☆</span>
-						<span>☆</span>
-						<span>☆</span>
-					</div>
-					<div className="data-buttons">
-						<a href="#" className="btn details-btn">
-							Details
-						</a>
-					</div>
-				</div>
-				<div className="game">
-					<div className="image-wrap">
-						<img src="/images/MineCraft.png" />
-					</div>
-					<h3>MineCraft</h3>
-					<div className="rating">
-						<span>☆</span>
-						<span>☆</span>
-						<span>☆</span>
-						<span>☆</span>
-						<span>☆</span>
-					</div>
-					<div className="data-buttons">
-						<a href="#" className="btn details-btn">
-							Details
-						</a>
-					</div>
-				</div>
-
-				<p className="no-articles">No games yet</p>
+				{games.length !== 0 ? (
+					games.map((game) => (
+						<LatestGamesCard
+							key={game._id}
+							imageUrl={game.imageUrl}
+							title={game.title}
+							id={game._id}
+							navigationChangeHandler={navigationChangeHandler}
+						/>
+					))
+				) : (
+					<p className="no-articles">No games yet</p>
+				)}
 			</div>
 		</section>
 	);
