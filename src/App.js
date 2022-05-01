@@ -18,7 +18,7 @@ function App() {
 			<main id="main-content">
 				<Switch>
 					<Route path="/" exact component={WelcomeWorld} />
-					<Route path="/games" component={GameCatalog} />
+					<Route path="/games" exact component={GameCatalog} />
 					<Route path="/create-game" component={CreateGame} />
 					<Route path="/edit-game" component={EditGame} />
 					<Route path="/register" component={Register} />
