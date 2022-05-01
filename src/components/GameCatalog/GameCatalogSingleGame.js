@@ -1,18 +1,15 @@
-export default function GameCatalogSingleGame({ imageUrl, category, title, id, navigationChangeHandler }) {
-	const onDetailsClick = (e) => {
-		e.preventDefault();
-		navigationChangeHandler(`/details/${id}`);
-	};
+import { Link } from "react-router-dom";
 
+export default function GameCatalogSingleGame({ imageUrl, category, title, id }) {
 	return (
 		<div className="allGames">
 			<div className="allGames-info">
 				<img src={imageUrl} alt="game-pho" />
 				<h6>{category}</h6>
 				<h2>{title}</h2>
-				<a href={`/games/${id}`} onClick={onDetailsClick} className="details-button">
+				<Link to={`/games/${id}`} className="details-button">
 					Details
-				</a>
+				</Link>
 			</div>
 		</div>
 	);

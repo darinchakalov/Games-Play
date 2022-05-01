@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import * as gamesService from "../services/gamesService.js";
 
-export default function GameDetails({ id }) {
+export default function GameDetails({ match }) {
 	const [game, setGame] = useState({});
 
 	useEffect(() => {
 		gamesService
-			.getOneGame(id)
+			.getOneGame(match.params.gameId)
 			.then((game) => setGame(game))
 			.catch((err) => console.log(err));
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
@@ -39,12 +41,12 @@ export default function GameDetails({ id }) {
 				</div>
 
 				<div className="buttons">
-					<a href="#" className="button">
+					<Link to={`/games/${match.params.gameId}/edit`} className="button">
 						Edit
-					</a>
-					<a href="#" className="button">
+					</Link>
+					<Link to={`/games/${match.params.gameId}/delete`} className="button">
 						Delete
-					</a>
+					</Link>
 				</div>
 			</div>
 
