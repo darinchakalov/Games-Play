@@ -12,7 +12,6 @@ function Header() {
 				<NavLink activeStyle={{ color: "grey" }} to="/games">
 					All Games
 				</NavLink>
-				{/* <NavLink to="/games">All games<NavLink> */}
 				<div id="user">
 					<NavLink activeStyle={{ color: "grey" }} to="/create-game">
 						Create Game
