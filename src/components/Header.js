@@ -1,23 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Header() {
 	return (
 		<header>
 			<h1>
-				<Link className="home" to="/">
+				<NavLink className="home" to="/">
 					GamesPlay
-				</Link>
+				</NavLink>
 			</h1>
 			<nav>
-				<Link to="/games">All Games</Link>
-				{/* <Link to="/games">All games<Link> */}
+				<NavLink activeStyle={{ color: "grey" }} to="/games">
+					All Games
+				</NavLink>
+				{/* <NavLink to="/games">All games<NavLink> */}
 				<div id="user">
-					<Link to="/create-game">Create Game</Link>
-					<Link to="/logout">Logout</Link>
+					<NavLink activeStyle={{ color: "grey" }} to="/create-game">
+						Create Game
+					</NavLink>
+					<NavLink to="/logout">Logout</NavLink>
 				</div>
 				<div id="guest">
-					<Link to="/login">Login</Link>
-					<Link to="/register">Register</Link>
+					<NavLink activeStyle={{ color: "grey" }} to="/login">
+						Login
+					</NavLink>
+					<NavLink activeStyle={{ color: "grey" }} to="/register">
+						Register
+					</NavLink>
 				</div>
 			</nav>
 		</header>
