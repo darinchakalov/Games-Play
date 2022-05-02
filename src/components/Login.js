@@ -1,7 +1,20 @@
-export default function Login() {
+import { Link, useHistory } from "react-router-dom";
+
+export default function Login({ history }) {
+	let historyHook = useHistory();
+
+	const loginSubmitHandler = (e) => {
+		e.preventDefault();
+
+		//TODO login functionality
+
+		// history.push("/games");
+		historyHook.push("/games");
+	};
+
 	return (
 		<section id="login-page" className="auth">
-			<form id="login">
+			<form id="login" onSubmit={loginSubmitHandler}>
 				<div className="container">
 					<div className="brand-logo"></div>
 					<h1>Login</h1>
@@ -13,7 +26,7 @@ export default function Login() {
 					<input type="submit" className="btn submit" value="Login" />
 					<p className="field">
 						<span>
-							If you don't have profile click <a href="#">here</a>
+							If you don't have profile click <Link to="/register">here</Link>
 						</span>
 					</p>
 				</div>

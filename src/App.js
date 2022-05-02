@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import Header from "./components/Header.js";
 import WelcomeWorld from "./components/WelcomeWorld.js";
@@ -24,6 +24,18 @@ function App() {
 					<Route path="/edit-game" component={EditGame} />
 					<Route path="/register" component={Register} />
 					<Route path="/login" component={Login} />
+					<Route path="/custom">
+						<h2>Custom page</h2>
+						<p>Custom router</p>
+					</Route>
+					<Route
+						path="/logout"
+						render={(props) => {
+							console.log("Logged Out!!!");
+
+							return <Redirect to="/" />;
+						}}
+					/>
 				</Switch>
 			</main>
 		</div>
